@@ -1,15 +1,17 @@
 const { formatResponse } = require("./utils");
 const Validator = require("./Validator");
+require('dotenv').config(); // connects local .env file variables to process.env command
 
 class Controller {
   static async getAuthor() {
-    // hard coded details of the author
+    // dotenv referenced details of the author using process.env.VARIABLE_NAME
+    // this is much more secure than hard coding details
     const author = {
-      name: "Emeka Chukwurah",
-      github: "@emmanuerl",
-      email: "emekaemmanuel045@gmail.com",
-      mobile: "09090527304",
-      twitter: "@chukwurah__",
+      name: process.env.MY_NAME,
+      github: process.env.MY_GITHUB,
+      email: process.env.MY_EMAIL,
+      mobile: process.env.MY_MOBILE_NUMBER,
+      twitter: process.env.MY_TWITTER,
     };
 
     return formatResponse(200, "My Rule-Validation API", author);
